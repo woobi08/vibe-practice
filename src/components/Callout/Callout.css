@@ -1,0 +1,70 @@
+.callout {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color: var(--color-bg-secondary);
+}
+
+.callout__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+
+.callout__icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.callout__body {
+  margin-top: 6px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.callout__body p + p {
+  margin-top: 8px;
+}
+
+/* --- Tip --- */
+.callout--tip {
+  background-color: var(--color-info-bg);
+}
+.callout--tip .callout__title {
+  color: var(--color-info);
+}
+
+/* --- Warning (Amber) --- */
+.callout--warning {
+  background-color: var(--color-warning-bg);
+}
+.callout--warning .callout__title {
+  color: var(--color-warning);
+}
+
+/* --- Info (Gray) --- */
+.callout--info {
+  background-color: var(--color-bg-secondary);
+}
+.callout--info .callout__title {
+  color: var(--color-text);
+}
+
+/* --- Summary (Grayscale) --- */
+.callout--summary {
+  background-color: var(--color-bg-secondary);
+}
+.callout--summary .callout__title {
+  color: var(--color-text);
+}
+
+/* --- Note (아주 밝은 파랑): 명령어/용어 설명 --- */
+.callout--note {
+  background-color: var(--color-note-bg);
+}
+.callout--note .callout__title {
+  color: var(--color-note-text);
+}

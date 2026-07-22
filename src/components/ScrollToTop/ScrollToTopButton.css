@@ -1,0 +1,39 @@
+.scroll-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  animation: scroll-top-in 160ms ease;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes scroll-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .scroll-top-btn {
+    right: 16px;
+    bottom: 16px;
+  }
+}

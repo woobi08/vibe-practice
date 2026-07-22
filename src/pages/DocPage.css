@@ -1,0 +1,108 @@
+/* 강의/문서 페이지들이 공통으로 사용하는 스타일 */
+
+.doc {
+  max-width: var(--content-max-width);
+}
+
+.doc-header {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.doc-title {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.doc-goal {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.doc-section {
+  margin-top: 48px;
+}
+
+.doc-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  scroll-margin-top: 80px;
+}
+
+.doc-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.doc-text + .doc-text {
+  margin-top: 8px;
+}
+
+.doc-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doc-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.doc-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-text-tertiary);
+}
+
+.doc-list code,
+.doc-text code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background-color: var(--color-inline-code-bg);
+  color: var(--color-inline-code-text);
+}
+
+.doc-inline-link {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.doc-inline-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .doc-title {
+    font-size: 24px;
+  }
+}

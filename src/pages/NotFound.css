@@ -1,0 +1,35 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding-top: 60px;
+}
+
+.not-found__code {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.not-found__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.not-found__desc {
+  font-size: 14.5px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.not-found__link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.not-found__link:hover {
+  text-decoration: underline;
+}

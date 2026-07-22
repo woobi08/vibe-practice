@@ -1,0 +1,262 @@
+.home {
+  max-width: 780px;
+}
+
+.home__hero {
+  padding: 12px 0 8px;
+}
+
+.home__eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.home__title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.home__subtitle {
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  word-break: keep-all;
+}
+
+/* --- 로드맵 ---
+   4열 고정 그리드라서 8개 박스가 항상 2줄로 정렬된다.
+   화살표는 실제 요소가 아니라 각 박스의 ::after 장식이라 줄바꿈 때문에
+   엉뚱한 자리로 떨어지지 않고, 줄 끝(4번째 칸)에서는 nth-child로 감춘다. */
+.roadmap {
+  margin-top: 40px;
+}
+
+.roadmap__track {
+  display: grid;
+  grid-template-columns: repeat(4, 140px);
+  gap: 28px 32px;
+  width: fit-content;
+}
+
+.roadmap__node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 140px;
+  height: 96px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: var(--color-bg-secondary);
+  text-align: center;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+a.roadmap__node:hover {
+  background-color: var(--color-bg-hover);
+  transform: translateY(-2px);
+}
+
+.roadmap__node--static {
+  cursor: default;
+}
+
+.roadmap__icon {
+  font-size: 22px;
+}
+
+.roadmap__label {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+  word-break: keep-all;
+}
+
+.roadmap__node::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -32px;
+  width: 32px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+/* 4칸마다(줄 끝) 다음 줄로 이어지는 화살표는 그리지 않는다 */
+.roadmap__node:nth-child(4n)::after {
+  content: none;
+}
+
+@media (max-width: 680px) {
+  .roadmap__track {
+    grid-template-columns: repeat(2, 140px);
+    gap: 24px 20px;
+  }
+
+  .roadmap__node::after {
+    right: -20px;
+    width: 20px;
+    font-size: 18px;
+  }
+
+  .roadmap__node:nth-child(2n)::after {
+    content: none;
+  }
+}
+
+/* --- 섹션 공통 --- */
+.home__section {
+  margin-top: 48px;
+}
+
+.home__section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.home__section-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.home__section-header .home__section-title {
+  margin-bottom: 0;
+}
+
+.home__section-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.home__section-link:hover {
+  text-decoration: underline;
+}
+
+/* --- STEP 카드 그리드 --- */
+.home__step-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.step-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-bg);
+  transition: border-color var(--transition-fast), transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.step-preview-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.step-preview-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step-preview-card__order {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.step-progress-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+.step-progress-badge--done {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border-color: var(--color-success-border);
+}
+
+.step-preview-card__title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.step-preview-card__summary {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* --- 도구 설정 그리드 --- */
+.home__tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-bg);
+  text-align: center;
+  transition: border-color var(--transition-fast), transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.tool-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.tool-card__icon {
+  font-size: 22px;
+}
+
+.tool-card__title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .home__title {
+    font-size: 25px;
+  }
+}

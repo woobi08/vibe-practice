@@ -1,0 +1,86 @@
+.terminal {
+  margin: 16px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #121212;
+  box-shadow: var(--shadow-sm);
+}
+
+.terminal__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal__dot--red {
+  background-color: #ff5f56;
+}
+
+.terminal__dot--yellow {
+  background-color: #ffbd2e;
+}
+
+.terminal__dot--green {
+  background-color: #27c93f;
+}
+
+.terminal__title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+.terminal__copy {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.terminal__copy:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #f0f0f0;
+}
+
+.terminal__body {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+.terminal__line {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  line-height: 1.8;
+  white-space: pre;
+}
+
+.terminal__prompt {
+  color: #27c93f;
+  margin-right: 8px;
+  user-select: none;
+}
+
+.terminal__command {
+  color: #f0f0f0;
+}
+
+.terminal__output {
+  color: #a3a3a3;
+}
