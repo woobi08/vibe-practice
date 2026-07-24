@@ -99,12 +99,16 @@
 }
 
 .step-card--goal[open] .step-card__title--toggle,
-.step-card--toggle-gray[open] .step-card__title--toggle {
+.step-card--toggle-gray[open] .step-card__title--toggle,
+.step-card--tasks[open] .step-card__title--toggle,
+.step-card--result[open] .step-card__title--toggle {
   margin-bottom: 12px;
 }
 
 .step-card--goal[open] .step-card__chevron,
-.step-card--toggle-gray[open] .step-card__chevron {
+.step-card--toggle-gray[open] .step-card__chevron,
+.step-card--tasks[open] .step-card__chevron,
+.step-card--result[open] .step-card__chevron {
   transform: rotate(90deg);
 }
 
@@ -256,6 +260,14 @@
   color: var(--color-text-secondary);
 }
 
+/* "해야 할 행동" 내용은 눈에 띄도록 더 굵고, 더 크고, 진한 색으로 강조한다 */
+.step-action__flow-text {
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
 /* 기존 "왜 필요한가?" 라벨과 동일한 타이포 값을 그대로 재사용한다 (디자인 변경 없음) */
 .step-action__label {
   font-size: 12.5px;
@@ -285,10 +297,6 @@
 }
 
 /* --- 핵심 요약 --- */
-.step-recap-section {
-  margin-top: 18px;
-}
-
 .step-recap-list {
   display: flex;
   flex-direction: column;
@@ -298,6 +306,9 @@
 .step-recap-list li {
   position: relative;
   padding-left: 14px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
 }
 
 .step-recap-list li::before {

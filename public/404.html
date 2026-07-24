@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Coding Manual</title>
+    <script type="text/javascript">
+      // GitHub Pages는 서버 라우팅이 없어서, index.html이 아닌 다른 경로로
+      // 직접 접속하거나 새로고침하면 이 404 페이지가 대신 뜬다.
+      // 실제 경로를 쿼리스트링에 숨겨서 index.html로 돌려보내고,
+      // index.html이 다시 원래 주소로 복원한다. (SPA GitHub Pages 표준 트릭)
+      var pathSegmentsToKeep = 1; // "/vibe-practice" 까지는 그대로 유지
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname
+            .split("/")
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(pathSegmentsToKeep)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

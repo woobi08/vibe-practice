@@ -62,7 +62,7 @@ function StepActionItem({ index, action }: StepActionItemProps) {
           {action.actionFlow && action.actionFlow.length > 0 && (
             <div>
               <p className="step-action__label">📍 해야 할 행동</p>
-              <p className="step-action__desc">{action.actionFlow.join(" → ")}</p>
+              <p className="step-action__flow-text">{action.actionFlow.join(" → ")}</p>
             </div>
           )}
 

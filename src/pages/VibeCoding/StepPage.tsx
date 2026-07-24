@@ -3,14 +3,29 @@ import { stepsData } from "../../data/stepsData";
 import Terminal from "../../components/Terminal/Terminal";
 import CodeBlock from "../../components/CodeBlock/CodeBlock";
 import Checklist from "../../components/Checklist/Checklist";
-import Summary from "../../components/Summary/Summary";
 import StepActionItem from "./StepActionItem";
 import "./StepPage.css";
+
+/** 토글 카드들이 공통으로 쓰는 펼침 화살표 */
+function ToggleChevron() {
+  return (
+    <svg className="step-card__chevron" width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M9 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 /**
  * "바이브 코딩 시작하기"의 STEP 페이지 하나를 그려주는 템플릿.
  * URL의 stepId로 stepsData에서 내용을 찾아 항상 같은 5개 섹션으로 렌더링한다:
  * 강의 목표 및 준비물 → 작업 순서 → 결과 확인 → 오늘의 핵심 정리 → 완료 체크리스트.
+ * 5개 섹션 모두 클릭하면 펼쳐지는 토글(아코디언)이다.
  * "왜 필요한가", "이번 강의에서 배우는 것", "핵심 정리"는 데이터가 있을 때만 나타난다.
  */
 function StepPage() {
@@ -44,21 +59,7 @@ function StepPage() {
       <details className="step-card step-card--goal" open>
         <summary className="step-card__title step-card__title--toggle">
           <span className="step-card__icon">🎯</span>강의 목표 및 준비물
-          <svg
-            className="step-card__chevron"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M9 6l6 6-6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ToggleChevron />
         </summary>
 
         <p className="step-card__text">{step.goal}</p>
@@ -88,17 +89,18 @@ function StepPage() {
       </details>
 
       {/* ② 작업 순서 */}
-      <section className="step-card step-card--tasks">
-        <h2 className="step-card__title">
+      <details className="step-card step-card--tasks" open>
+        <summary className="step-card__title step-card__title--toggle">
           <span className="step-card__icon">🛠</span>작업 순서
-        </h2>
+          <ToggleChevron />
+        </summary>
         <p className="step-card__hint">항목을 누르면 상세 설명이 펼쳐져요.</p>
         <div className="step-actions">
           {step.actions.map((action, i) => (
             <StepActionItem key={action.title} index={i} action={action} />
           ))}
         </div>
-      </section>
+      </details>
 
       {/* STEP 전체에 걸친 명령어(구버전 STEP 호환용). 각 작업 순서 항목에 자체 commands가
           있으면(STEP 01처럼) step.commands는 비어있어 이 섹션은 나타나지 않는다. */}
@@ -112,34 +114,38 @@ function StepPage() {
       )}
 
       {/* ③ 결과 확인 */}
-      <section className="step-card step-card--result">
-        <h2 className="step-card__title">
+      <details className="step-card step-card--result" open>
+        <summary className="step-card__title step-card__title--toggle">
           <span className="step-card__icon">✅</span>결과 확인
-        </h2>
+          <ToggleChevron />
+        </summary>
         <p className="step-card__text">{step.expectedResult}</p>
         {step.resultTree && <CodeBlock code={step.resultTree} label="folder structure" />}
-      </section>
+      </details>
 
       {/* ④ 오늘의 핵심 정리 */}
       {step.recap && step.recap.length > 0 && (
-        <section className="step-recap-section">
-          <Summary>
-            <ul className="step-recap-list">
-              {step.recap.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </Summary>
-        </section>
+        <details className="step-card step-card--tasks" open>
+          <summary className="step-card__title step-card__title--toggle">
+            <span className="step-card__icon">📚</span>오늘의 핵심 정리
+            <ToggleChevron />
+          </summary>
+          <ul className="step-recap-list">
+            {step.recap.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </details>
       )}
 
       {/* ⑤ 완료 체크리스트 */}
-      <section className="step-card">
-        <h2 className="step-card__title">
+      <details className="step-card step-card--tasks" open>
+        <summary className="step-card__title step-card__title--toggle">
           <span className="step-card__icon">☑️</span>완료 체크리스트
-        </h2>
+          <ToggleChevron />
+        </summary>
         <Checklist storageKey={step.id} items={step.checklist} />
-      </section>
+      </details>
 
       <nav className="step-nav">
         {prevStep ? (

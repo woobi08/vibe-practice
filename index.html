@@ -7,6 +7,21 @@
     <title>Vibe Coding Manual · 디자이너를 위한 바이브 코딩 매뉴얼</title>
   </head>
   <body>
+    <script type="text/javascript">
+      // 404.html이 쿼리스트링에 숨겨둔 원래 경로를 다시 주소창에 복원한다
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, "", l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
